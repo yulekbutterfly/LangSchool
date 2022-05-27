@@ -8,6 +8,6 @@ namespace LangSchool.Data
 {
     class DataEntities
     {
-        public static Entities context { get; } =new Entities();
+        public static Data.Entities context { get; } =new Data.Entities();
     }
 }

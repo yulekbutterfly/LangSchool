@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:LangSchool"
         mc:Ignorable="d"
         Icon="res/school_logo.ico"
-        MinHeight="650" MaxHeight="800"
+        MinHeight="650" MinWidth="900"
         Title="Школа иностранных языков" Height="800" Width="900"
         >
-    <Grid>
+    <Grid Background="#FFE7FABF">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -35,26 +35,35 @@
                    FontSize="14"
                    VerticalAlignment="Center"
                    Margin="10"/>
-            <ComboBox Width="50"/>
+            <ComboBox
+                x:Name="ComFilterGender"
+                Width="50" 
+                SelectionChanged="ComFilterGender_SelectionChanged_1" />
             
             <TextBlock Text="Поиск"
                    FontFamily="Comic Sans MS"
                    FontSize="14"
                    VerticalAlignment="Center"
                    Margin="10"/>
-            <TextBox Width="120"/>
+            <TextBox x:Name="txtSearch"   
+                     Width="120"
+                     SelectionChanged="txtSearch_SelectionChanged"/>
             
             <TextBlock Text="Сортировка"
                    FontFamily="Comic Sans MS"
                    FontSize="14"
                    VerticalAlignment="Center"
                    Margin="10"/>
-            <ComboBox Width="80"/>
-            <CheckBox Content="День рождения в текущем месяце"
+            <ComboBox x:Name="ComFilter1" Width="80" 
+                      SelectionChanged="ComFilter1_SelectionChanged"/>
+            <CheckBox x:Name="CheckBirth" 
+                  Content="День рождения в текущем месяце"
                   VerticalAlignment="Center"
                   FontFamily="Comic Sans MS"
                   FontSize="14"
-                  Margin="10"/>
+                  Margin="10"
+                      Checked="CheckBirth_Checked"
+                      Unchecked="CheckBirth_Unchecked"/>
         </WrapPanel>
 
         <WrapPanel HorizontalAlignment="Right"
@@ -64,10 +73,13 @@
                               FontSize="14"
                               Margin="10"
                               Height="30"
-                              Background="#FF05A0FF"/>
+                              Background="#FF05A0FF"
+                    Click="Button_Click_1"/>
             </WrapPanel>
         <ListView Grid.Row="2"
-                  x:Name="ClientList">
+                  x:Name="ClientList"
+                  MouseDoubleClick="ClientList_MouseDoubleClick"
+                  KeyDown="ClientList_KeyDown">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Код" Width="30"  DisplayMemberBinding="{Binding ID}"/>
@@ -111,7 +123,12 @@
                    FontSize="14"
                    VerticalAlignment="Center"
                    Margin="10"/>
-            <ComboBox Width="80"/>
+            <ComboBox 
+                      x:Name="ComList"
+                      Width="80"
+                      SelectionChanged="ComList_SelectionChanged">
+                
+            </ComboBox>
             <Button Content="Предыдущая"
                               FontFamily="Comic Sans MS"
                               FontSize="14"
@@ -119,6 +136,7 @@
                               Height="30"
                               Width="120"
                               Background="#FF05A0FF"/>
+            
             <TextBlock Text="100"
                    FontFamily="Comic Sans MS"
                    FontSize="14"
@@ -141,6 +159,17 @@
                               Height="30"
                               Width="120"
                               Background="#FF05A0FF"/>
+            <Button           x:Name="btn_AddClient"     
+                              Content="Добавить клиента"
+                              FontFamily="Comic Sans MS"
+                              FontSize="14"
+                              Margin="10 10 10 0"
+                              Height="30"
+                              Width="130"
+                              Background="#FF05A0FF" 
+                              Click="btn_AddClient_Click"/>
+
+            
         </WrapPanel>
         
 
